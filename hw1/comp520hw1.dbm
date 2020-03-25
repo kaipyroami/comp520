@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+CAUTION: Do not modify this file unless you know what you are doing.
+         Unexpected results may occur if the code is changed deliberately.
+-->
+<dbmodel pgmodeler-ver="0.9.2" last-position="0,0" last-zoom="1" max-obj-count="4"
+	 default-schema="public" default-owner="postgres">
+<database name="comp520" is-template="false" allow-conns="true">
+</database>
+
+<schema name="public" layer="0" fill-color="#e1e1e1" sql-disabled="true">
+</schema>
+
+<table name="movie_data_temp" layer="0" collapse-mode="2" max-obj-count="33">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<tablespace name="pg_default"/>
+	<comment><![CDATA[This table is used to import the initial data from the movies csv file.]]></comment>
+	<position x="140" y="40"/>
+	<column name="color">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="director_name">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="num_critic_for_reviews">
+		<type name="bigint" length="0"/>
+	</column>
+	<column name="duration">
+		<type name="bigint" length="0"/>
+	</column>
+	<column name="director_facebook_likes">
+		<type name="bigint" length="0"/>
+	</column>
+	<column name="actor_3_facebook_likes">
+		<type name="bigint" length="0"/>
+	</column>
+	<column name="actor_2_name">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="actor_1_facebook_likes">
+		<type name="bigint" length="0"/>
+	</column>
+	<column name="gross">
+		<type name="money" length="0"/>
+	</column>
+	<column name="genres">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="actor_1_name">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="movie_title">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="num_voted_users">
+		<type name="bigint" length="0"/>
+	</column>
+	<column name="cast_total_facebook_likes">
+		<type name="bigint" length="0"/>
+	</column>
+	<column name="actor_3_name">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="facenumber_in_poster">
+		<type name="bigint" length="0"/>
+	</column>
+	<column name="plot_keywords">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="movie_imdb_link">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="num_user_for_reviews">
+		<type name="bigint" length="0"/>
+	</column>
+	<column name="language">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="country">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="content_rating">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="budget">
+		<type name="money" length="0"/>
+	</column>
+	<column name="title_year">
+		<type name="bigint" length="0"/>
+	</column>
+	<column name="actor_2_facebook_likes">
+		<type name="bigint" length="0"/>
+	</column>
+	<column name="imdb_score">
+		<type name="decimal" length="4" precision="1"/>
+	</column>
+	<column name="aspect_ratio">
+		<type name="decimal" length="4" precision="2"/>
+	</column>
+	<column name="movie_facebook_likes">
+		<type name="bigint" length="0"/>
+	</column>
+</table>
+
+<table name="color" layer="0" collapse-mode="2" max-obj-count="2">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<tablespace name="pg_default"/>
+	<position x="500" y="240"/>
+	<column name="id" not-null="true"
+	 identity-type="ALWAYS">
+		<type name="smallint" length="0"/>
+	</column>
+	<column name="color">
+		<type name="varchar" length="0"/>
+	</column>
+	<constraint name="color_id_pk" type="pk-constr" table="public.color">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+</dbmodel>

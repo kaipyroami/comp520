@@ -1,4 +1,4 @@
-version: '3.5'
+version: '3.7'
 
 services:
   postgres:
@@ -7,11 +7,11 @@ services:
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
-      PGDATA: /data/postgres
+      POSTGRES_DB: comp520
     volumes:
-       - ./sql/data:/var/lib/postgresql/data/pgdata
-       - ./sql/init.sql:/docker-entrypoint-initdb.d/init.sql
-       - ./sql/data-init.sql:/docker-entrypoint-initdb.d/data-init.sql
+       - ./sql/data:/tmp
+       - ./sql/init.sql:/docker-entrypoint-initdb.d/1-init.sql
+       - ./sql/data-init.sql:/docker-entrypoint-initdb.d/2-data-init.sql
     ports:
       - "5432:5432"
     networks:
