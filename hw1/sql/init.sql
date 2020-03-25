@@ -1,6 +1,6 @@
 -- This file is for creating the schema.
 
--- TODO: Make temp table.
+
 
 -- Database generated with pgModeler (PostgreSQL Database Modeler).
 -- pgModeler  version: 0.9.2
