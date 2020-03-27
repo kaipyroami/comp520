@@ -32,3 +32,42 @@ INSERT INTO public.countries (country) SELECT country FROM public.movie_data_tem
 INSERT INTO public.content_ratings (content_rating) SELECT content_rating FROM public.movie_data_temp WHERE content_rating IS NOT NULL GROUP BY content_rating;
 UPDATE public.content_ratings content_rating SET content_rating = 'Not Rated' WHERE content_rating = 'Unrated';
 DELETE FROM public.content_ratings WHERE content_rating = 'Unrated';
+
+-- Import Movies Without FKs:
+INSERT INTO public.movies
+(
+	num_critic_for_reviews,
+	duration,
+	gross,
+	genres,
+	movie_title,
+	num_voted_users,
+	facenumber_in_poster,
+	plot_keywords,
+	movie_imdb_link,
+	num_user_for_reviews,
+	language,
+	budget,
+	title_year,
+	imdb_score,
+	aspect_ratio,
+	movie_facebook_likes
+)
+SELECT 
+	num_critic_for_reviews,
+	duration,
+	gross,
+	genres,
+	movie_title,
+	num_voted_users,
+	facenumber_in_poster,
+	plot_keywords,
+	movie_imdb_link,
+	num_user_for_reviews,
+	language,
+	budget,
+	title_year,
+	imdb_score,
+	aspect_ratio,
+	movie_facebook_likes
+FROM public.movie_data_temp;
