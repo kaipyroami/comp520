@@ -84,7 +84,7 @@ CREATE TABLE public.directors (
 -- object: public.actors | type: TABLE --
 -- DROP TABLE IF EXISTS public.actors CASCADE;
 CREATE TABLE public.actors (
-	id smallint NOT NULL GENERATED ALWAYS AS IDENTITY ,
+	id bigint NOT NULL GENERATED ALWAYS AS IDENTITY ,
 	name varchar NOT NULL,
 	facebook_likes bigint,
 	CONSTRAINT actors_pk PRIMARY KEY (id)
@@ -97,7 +97,7 @@ CREATE TABLE public.actors (
 -- object: public.movies | type: TABLE --
 -- DROP TABLE IF EXISTS public.movies;
 CREATE TABLE public.movies (
-	id smallint NOT NULL GENERATED ALWAYS AS IDENTITY ,
+	id bigint NOT NULL GENERATED ALWAYS AS IDENTITY ,
 	id_colors smallint,
 	id_directors smallint,
 	num_critic_for_reviews bigint,
@@ -124,7 +124,7 @@ CREATE TABLE public.movies (
 )
 TABLESPACE pg_default;
 -- ddl-end --
-COMMENT ON TABLE public.movies IS E'This table is used to import the initial data from the movies csv file.';
+COMMENT ON TABLE public.movies IS 'This table is used to import the initial data from the movies csv file.';
 -- ddl-end --
 -- ALTER TABLE public.movies OWNER TO postgres;
 -- ddl-end --
@@ -184,10 +184,10 @@ ON DELETE SET NULL ON UPDATE CASCADE;
 -- object: public.many_actors_has_many_movies | type: TABLE --
 -- DROP TABLE IF EXISTS public.many_actors_has_many_movies CASCADE;
 CREATE TABLE public.many_actors_has_many_movies (
-	id_actors smallint NOT NULL,
-	id_movies smallint NOT NULL,
+	id_actors bigint NOT NULL,
+	id_movies bigint NOT NULL,
 	movie_actor_number smallint NOT NULL,
-	CONSTRAINT many_actors_has_many_movies_pk PRIMARY KEY (id_actors,id_movies),
+	CONSTRAINT many_actors_has_many_movies_pk PRIMARY KEY (id_movies,id_actors),
 	CONSTRAINT movie_actor_number_unq UNIQUE (movie_actor_number)
 
 );
@@ -206,5 +206,6 @@ ALTER TABLE public.many_actors_has_many_movies ADD CONSTRAINT movies_fk FOREIGN 
 REFERENCES public.movies (id) MATCH FULL
 ON DELETE CASCADE ON UPDATE CASCADE;
 -- ddl-end --
+
 
 

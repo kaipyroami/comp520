@@ -1,4 +1,4 @@
--- This file is for inserting data.
+-- This file is for inserting and manupulating the data.
 
 -- Send the csv data into the temporary table.
 \copy movie_data_temp FROM '/tmp/movies-metadata-520-sp19.csv' CSV HEADER;
@@ -71,3 +71,13 @@ SELECT
 	aspect_ratio,
 	movie_facebook_likes
 FROM public.movie_data_temp;
+
+-- Add relations and foreign keys
+
+
+
+-- (5) Database Views, two of which are a combination of multiple tables.
+
+-- (5) Stored Procedures (with parameters) to run compiled SQL queries. One of these stored procedures will accept and make use of the SQL Date format to be passed as an argument.
+
+-- (5) Five additional SQL Queries to perform joins across multiple tables. Each of these tables should consist of a three table join.

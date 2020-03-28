@@ -145,7 +145,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	<position x="1260" y="20"/>
 	<column name="id" not-null="true"
 	 identity-type="ALWAYS">
-		<type name="smallint" length="0"/>
+		<type name="bigint" length="0"/>
 	</column>
 	<column name="name" not-null="true">
 		<type name="varchar" length="0"/>
@@ -166,7 +166,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	<position x="380" y="20"/>
 	<column name="id" not-null="true"
 	 identity-type="ALWAYS">
-		<type name="smallint" length="0"/>
+		<type name="bigint" length="0"/>
 	</column>
 	<column name="num_critic_for_reviews">
 		<type name="bigint" length="0"/>
@@ -320,7 +320,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 
 <table name="many_actors_has_many_movies" layer="0" collapse-mode="2" max-obj-count="4">
 	<schema name="public"/>
-	<position x="1200" y="260"/>
+	<position x="1220" y="260"/>
 	<column name="movie_actor_number" not-null="true">
 		<type name="smallint" length="0"/>
 	</column>
