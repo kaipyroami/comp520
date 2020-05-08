@@ -163,7 +163,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	<role name="postgres"/>
 	<tablespace name="pg_default"/>
 	<comment><![CDATA[This table is used to import the initial data from the movies csv file.]]></comment>
-	<position x="380" y="20"/>
+	<position x="400" y="20"/>
 	<column name="id" not-null="true"
 	 identity-type="ALWAYS">
 		<type name="bigint" length="0"/>
