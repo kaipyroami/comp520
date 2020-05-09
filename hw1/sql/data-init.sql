@@ -74,6 +74,14 @@ FROM public.movie_data_temp;
 
 -- Add relations and foreign keys
 
+UPDATE movies
+SET id_colors = colors.id
+FROM colors, movie_data_temp
+WHERE 
+	movie_data_temp.movie_title = movies.movie_title AND 
+	movie_data_temp.color = colors.color;
+
+
 
 
 -- (5) Database Views, two of which are a combination of multiple tables.
