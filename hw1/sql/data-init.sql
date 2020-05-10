@@ -81,11 +81,37 @@ WHERE
 	movie_data_temp.movie_title = movies.movie_title AND 
 	movie_data_temp.color = colors.color;
 
+UPDATE movies
+SET id_directors = directors.id
+FROM directors, movie_data_temp
+WHERE 
+	movie_data_temp.movie_title = movies.movie_title AND 
+	movie_data_temp.director_name = directors.director;
+
+UPDATE movies
+SET id_countries = countries.id
+FROM countries, movie_data_temp
+WHERE 
+	movie_data_temp.movie_title = movies.movie_title AND 
+	movie_data_temp.country = countries.country;
+
+UPDATE movies
+SET id_content_ratings = content_ratings.id
+FROM content_ratings, movie_data_temp
+WHERE 
+	movie_data_temp.movie_title = movies.movie_title AND 
+	movie_data_temp.content_rating = content_ratings.content_rating;
+
+-- Actor - Movie join table...
 
 
 
 -- (5) Database Views, two of which are a combination of multiple tables.
 
+
+
 -- (5) Stored Procedures (with parameters) to run compiled SQL queries. One of these stored procedures will accept and make use of the SQL Date format to be passed as an argument.
+
+
 
 -- (5) Five additional SQL Queries to perform joins across multiple tables. Each of these tables should consist of a three table join.
