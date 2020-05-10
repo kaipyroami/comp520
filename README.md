@@ -18,8 +18,7 @@ pgAdmin ID: ```pgadmin4```
 pgAdmin Password: ```admin```
 
 ### Create new server
-
-![Connect to Server](resources/create_server.png)
+![Connect to Server](https://github.com/kaipyroami/comp520/blob/master/resources/create_server.PNG?raw=true)
 
 General -> Name: ```postgres```
 
