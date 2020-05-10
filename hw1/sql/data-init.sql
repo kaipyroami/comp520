@@ -86,7 +86,7 @@ SET id_directors = directors.id
 FROM directors, movie_data_temp
 WHERE 
 	movie_data_temp.movie_title = movies.movie_title AND 
-	movie_data_temp.director_name = directors.director;
+	movie_data_temp.director_name = directors.name;
 
 UPDATE movies
 SET id_countries = countries.id
