@@ -13,11 +13,14 @@ docker-compose stop
 ```
 
 ### Log into pgAdmin4
-pgAdmin ID: ```pgadmin4@pgadmin.org```
+pgAdmin ID: ```pgadmin4```
 
 pgAdmin Password: ```admin```
 
 ### Create new server
+
+![Connect to Server](resources/create_server.png)
+
 General -> Name: ```postgres```
 
 Connection -> Hostname / address: ```postgres```
