@@ -218,6 +218,24 @@ CREATE FUNCTION search_actor(actor_name varchar) RETURNS TABLE(id bigint, names 
     END;
 $$ LANGUAGE plpgsql;
 
+CREATE FUNCTION search_director_title(director_name varchar, title varchar) RETURNS TABLE(id bigint, names varchar, titles varchar) AS $$
+    BEGIN
+         RETURN QUERY
+			SELECT directors.id, directors.name, movies.movie_title 
+			FROM public.directors, public.movies
+			WHERE directors.name LIKE CONCAT( '%', director_name, '%') AND movies.movie_title LIKE CONCAT( '%', title, '%');
+    END;
+$$ LANGUAGE plpgsql;
+
+CREATE FUNCTION search_actor_title(actor_name varchar, title varchar) RETURNS TABLE(id bigint, names varchar, titles varchar) AS $$
+    BEGIN
+         RETURN QUERY
+			SELECT actors.id, actors.name, movies.movie_title 
+			FROM public.actors, public.movies
+			WHERE actors.name LIKE CONCAT( '%', actor_name, '%') AND movies.movie_title LIKE CONCAT( '%', title, '%');
+    END;
+$$ LANGUAGE plpgsql;
+
 CREATE FUNCTION movies_last_updated() RETURNS TRIGGER AS $$
 BEGIN
 NEW.last_modified = CURRENT_TIMESTAMP;
@@ -231,10 +249,34 @@ FOR EACH ROW
 EXECUTE PROCEDURE movies_last_updated();
 
 
+
+
 -- (5) Five additional SQL Queries to perform joins across multiple tables. 
 -- Each of these tables should consist of a three table join.
 
-
+SELECT 	
+		directors.name AS director,
+		colors.color AS color,
+		num_critic_for_reviews,
+		duration,
+		gross,
+		genres,
+		movie_title,
+		num_voted_users,
+		facenumber_in_poster,
+		plot_keywords,
+		movie_imdb_link,
+		num_user_for_reviews,
+		language,
+		budget,
+		title_year,
+		imdb_score,
+		aspect_ratio,
+		movie_facebook_likes
+FROM movies 
+JOIN directors on directors.id = movies.id_directors
+JOIN colors ON colors.id = movies.id_colors
+ORDER BY movies.movie_title;
 
 
 
