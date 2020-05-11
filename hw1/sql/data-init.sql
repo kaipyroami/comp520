@@ -237,10 +237,10 @@ CREATE FUNCTION search_actor_title(actor_name varchar, title varchar) RETURNS TA
 $$ LANGUAGE plpgsql;
 
 CREATE FUNCTION movies_last_updated() RETURNS TRIGGER AS $$
-BEGIN
-NEW.last_modified = CURRENT_TIMESTAMP;
-RETURN NEW;
-END;
+	BEGIN
+		NEW.last_modified = CURRENT_TIMESTAMP;
+		RETURN NEW;
+	END;
 $$ LANGUAGE plpgsql;
 
 CREATE TRIGGER movie_updated
@@ -248,7 +248,13 @@ BEFORE UPDATE ON movies
 FOR EACH ROW
 EXECUTE PROCEDURE movies_last_updated();
 
-
+-- SELECT force_movies_timestamp(CAST(5 AS bigint),CAST(current_timestamp as timestamp));
+CREATE OR REPLACE PROCEDURE force_movies_timestamp(id_movies bigint, stamp timestamp) RETURNS VOID AS $$
+	BEGIN 
+		UPDATE movies SET last_modified = stamp
+		WHERE movies.id = id_movies;
+	END;
+$$ LANGUAGE plpgsql;
 
 
 -- (5) Five additional SQL Queries to perform joins across multiple tables. 
