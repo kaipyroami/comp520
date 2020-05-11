@@ -195,3 +195,8 @@ ORDER BY roi_mult DESC;
 -- Each of these tables should consist of a three table join.
 
 
+
+
+
+-- Remove import table.
+-- DROP TABLE public.movie_data_temp;

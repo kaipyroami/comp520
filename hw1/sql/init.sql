@@ -5,7 +5,7 @@
 -- pgModeler  version: 0.9.2
 -- PostgreSQL version: 12.0
 -- Project Site: pgmodeler.io
--- Model Author: ---
+-- Model Author: Kyle Crockett
 
 
 -- Database creation must be done outside a multicommand file.
