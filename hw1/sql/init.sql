@@ -187,7 +187,7 @@ CREATE TABLE public.many_actors_has_many_movies (
 	id_actors bigint NOT NULL,
 	id_movies bigint NOT NULL,
 	movie_actor_number smallint NOT NULL,
-	CONSTRAINT many_actors_has_many_movies_pk PRIMARY KEY (id_movies,id_actors),
+	CONSTRAINT many_actors_has_many_movies_pk PRIMARY KEY (id_movies,id_actors)
 );
 -- ddl-end --
 
