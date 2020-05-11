@@ -13,6 +13,8 @@ docker-compose stop
 ```
 
 ### Log into pgAdmin4
+Go to: ```http://localhost:5050/```
+
 pgAdmin ID: ```pgadmin4```
 
 pgAdmin Password: ```admin```
