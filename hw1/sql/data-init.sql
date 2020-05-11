@@ -200,11 +200,8 @@ ORDER BY actors.name;
 -- (5) Stored Procedures (with parameters) to run compiled SQL queries. 
 -- One of these stored procedures will accept and make use of the SQL Date format to be passed as an argument.
 -- Note: PostgreSQL handles Procedures and Functions differently than MySQL.
-CREATE OR REPLACE FUNCTION title_search(title varchar) RETURNS TABLE(id bigint, titles varchar) AS $$
-    DECLARE
-        ids INTEGER[];
+CREATE FUNCTION search_title(title varchar) RETURNS TABLE(id bigint, titles varchar) AS $$
     BEGIN
-         ids := ARRAY[1,2];
          RETURN QUERY
              SELECT movies.id, movies.movie_title
              FROM public.movies
@@ -212,11 +209,8 @@ CREATE OR REPLACE FUNCTION title_search(title varchar) RETURNS TABLE(id bigint, 
     END;
 $$ LANGUAGE plpgsql;
 
-CREATE OR REPLACE FUNCTION actor_search(actor_name varchar) RETURNS TABLE(id bigint, names varchar) AS $$
-    DECLARE
-        ids INTEGER[];
+CREATE FUNCTION search_actor(actor_name varchar) RETURNS TABLE(id bigint, names varchar) AS $$
     BEGIN
-         ids := ARRAY[1,2];
          RETURN QUERY
              SELECT actors.id, actors.name
              FROM public.actors
@@ -224,6 +218,17 @@ CREATE OR REPLACE FUNCTION actor_search(actor_name varchar) RETURNS TABLE(id big
     END;
 $$ LANGUAGE plpgsql;
 
+CREATE FUNCTION movies_last_updated() RETURNS TRIGGER AS $$
+BEGIN
+NEW.last_modified = CURRENT_TIMESTAMP;
+RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE TRIGGER movie_updated
+BEFORE UPDATE ON movies
+FOR EACH ROW
+EXECUTE PROCEDURE movies_last_updated();
 
 
 -- (5) Five additional SQL Queries to perform joins across multiple tables. 

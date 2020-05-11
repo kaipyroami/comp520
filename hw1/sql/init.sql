@@ -119,6 +119,7 @@ CREATE TABLE public.movies (
 	imdb_score decimal(4,1),
 	aspect_ratio decimal(4,2),
 	movie_facebook_likes bigint,
+	last_modified timestamp,
 	CONSTRAINT movies_pk PRIMARY KEY (id)
 
 )
