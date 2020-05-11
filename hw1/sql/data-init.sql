@@ -173,6 +173,12 @@ FROM movies
 WHERE gross IS NOT NULL
 ORDER BY gross DESC;
 
+CREATE VIEW movie_budget_rank AS
+SELECT movie_title, budget 
+FROM movies 
+WHERE budget IS NOT NULL
+ORDER BY budget DESC;
+
 CREATE VIEW movie_roi AS
 SELECT movie_title, gross, 
 	budget, 
@@ -182,6 +188,12 @@ WHERE gross IS NOT NULL
 AND budget IS NOT NULL
 ORDER BY roi_mult DESC;
 
+CREATE VIEW actor_films AS
+SELECT actors.name, movies.movie_title
+FROM actors
+JOIN many_actors_has_many_movies ON many_actors_has_many_movies.id_actors = actors.id
+JOIN movies ON many_actors_has_many_movies.id_movies = movies.id
+ORDER BY actors.name;
 
 
 
