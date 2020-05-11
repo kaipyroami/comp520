@@ -199,7 +199,30 @@ ORDER BY actors.name;
 
 -- (5) Stored Procedures (with parameters) to run compiled SQL queries. 
 -- One of these stored procedures will accept and make use of the SQL Date format to be passed as an argument.
+-- Note: PostgreSQL handles Procedures and Functions differently than MySQL.
+CREATE OR REPLACE FUNCTION title_search(title varchar) RETURNS TABLE(id bigint, titles varchar) AS $$
+    DECLARE
+        ids INTEGER[];
+    BEGIN
+         ids := ARRAY[1,2];
+         RETURN QUERY
+             SELECT movies.id, movies.movie_title
+             FROM public.movies
+             WHERE movies.movie_title LIKE CONCAT( '%', title, '%');
+    END;
+$$ LANGUAGE plpgsql;
 
+CREATE OR REPLACE FUNCTION actor_search(actor_name varchar) RETURNS TABLE(id bigint, names varchar) AS $$
+    DECLARE
+        ids INTEGER[];
+    BEGIN
+         ids := ARRAY[1,2];
+         RETURN QUERY
+             SELECT actors.id, actors.name
+             FROM public.actors
+             WHERE actors.name LIKE CONCAT( '%', actor_name, '%');
+    END;
+$$ LANGUAGE plpgsql;
 
 
 
