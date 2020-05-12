@@ -1,0 +1,783 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+CAUTION: Do not modify this file unless you know what you are doing.
+         Unexpected results may occur if the code is changed deliberately.
+-->
+<dbmodel pgmodeler-ver="0.9.2" last-position="0,0" last-zoom="1" max-obj-count="20"
+	 default-schema="public" default-owner="postgres">
+<database name="comp520" encoding="UTF8" lc-collate="en_US.utf8" lc-ctype="en_US.utf8" is-template="false" allow-conns="true">
+	<role name="postgres"/>
+	<tablespace name="pg_default"/>
+</database>
+
+<schema name="public" layer="0" rect-visible="true" fill-color="#e1e1e1" sql-disabled="true">
+</schema>
+
+<table name="colors" layer="0" collapse-mode="2" max-obj-count="2">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="800" y="160"/>
+	<column name="id" not-null="true"
+	 identity-type="ALWAYS" start="1" increment="1" min-value="1" max-value="32767" cache="1">
+		<type name="smallint" length="0"/>
+	</column>
+	<column name="color">
+		<type name="character varying" length="0"/>
+	</column>
+	<constraint name="color_pk" type="pk-constr" table="public.colors">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<sequence name="colors_id_seq" cycle="false" start="1" increment="1" min-value="1" max-value="32767" cache="1" sql-disabled="true">
+	<schema name="public"/>
+	<role name="postgres"/>
+</sequence>
+
+<table name="directors" layer="0" collapse-mode="2" max-obj-count="3">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="1200" y="100"/>
+	<column name="id" not-null="true"
+	 identity-type="ALWAYS" start="1" increment="1" min-value="1" max-value="32767" cache="1">
+		<type name="smallint" length="0"/>
+	</column>
+	<column name="name" not-null="true">
+		<type name="character varying" length="0"/>
+	</column>
+	<column name="facebook_likes">
+		<type name="bigint" length="0"/>
+	</column>
+	<constraint name="directors_pk" type="pk-constr" table="public.directors">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<sequence name="directors_id_seq" cycle="false" start="1" increment="1" min-value="1" max-value="32767" cache="1" sql-disabled="true">
+	<schema name="public"/>
+	<role name="postgres"/>
+</sequence>
+
+<table name="actors" layer="0" collapse-mode="2" max-obj-count="3">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="1080" y="1320"/>
+	<column name="id" not-null="true"
+	 identity-type="ALWAYS" start="1" increment="1" min-value="1" max-value="9223372036854775807" cache="1">
+		<type name="bigint" length="0"/>
+	</column>
+	<column name="name" not-null="true">
+		<type name="character varying" length="0"/>
+	</column>
+	<column name="facebook_likes">
+		<type name="bigint" length="0"/>
+	</column>
+	<constraint name="actors_pk" type="pk-constr" table="public.actors">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<sequence name="actors_id_seq" cycle="false" start="1" increment="1" min-value="1" max-value="9223372036854775807" cache="1" sql-disabled="true">
+	<schema name="public"/>
+	<role name="postgres"/>
+</sequence>
+
+<table name="movies" layer="0" collapse-mode="2" max-obj-count="27">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<comment><![CDATA[This table is used to import the initial data from the movies csv file.]]></comment>
+	<position x="660" y="380"/>
+	<column name="id" not-null="true"
+	 identity-type="ALWAYS" start="1" increment="1" min-value="1" max-value="9223372036854775807" cache="1">
+		<type name="bigint" length="0"/>
+	</column>
+	<column name="id_colors">
+		<type name="smallint" length="0"/>
+	</column>
+	<column name="id_directors">
+		<type name="smallint" length="0"/>
+	</column>
+	<column name="num_critic_for_reviews">
+		<type name="bigint" length="0"/>
+	</column>
+	<column name="duration">
+		<type name="bigint" length="0"/>
+	</column>
+	<column name="gross">
+		<type name="money" length="0"/>
+	</column>
+	<column name="genres">
+		<type name="character varying" length="0"/>
+	</column>
+	<column name="movie_title">
+		<type name="character varying" length="0"/>
+	</column>
+	<column name="num_voted_users">
+		<type name="bigint" length="0"/>
+	</column>
+	<column name="cast_total_facebook_likes">
+		<type name="bigint" length="0"/>
+	</column>
+	<column name="facenumber_in_poster">
+		<type name="bigint" length="0"/>
+	</column>
+	<column name="plot_keywords">
+		<type name="character varying" length="0"/>
+	</column>
+	<column name="movie_imdb_link">
+		<type name="character varying" length="0"/>
+	</column>
+	<column name="num_user_for_reviews">
+		<type name="bigint" length="0"/>
+	</column>
+	<column name="language">
+		<type name="character varying" length="0"/>
+	</column>
+	<column name="id_countries">
+		<type name="smallint" length="0"/>
+	</column>
+	<column name="id_content_ratings">
+		<type name="smallint" length="0"/>
+	</column>
+	<column name="budget">
+		<type name="money" length="0"/>
+	</column>
+	<column name="title_year">
+		<type name="smallint" length="0"/>
+	</column>
+	<column name="imdb_score">
+		<type name="numeric" length="4" precision="1"/>
+	</column>
+	<column name="aspect_ratio">
+		<type name="numeric" length="4" precision="2"/>
+	</column>
+	<column name="movie_facebook_likes">
+		<type name="bigint" length="0"/>
+	</column>
+	<column name="last_modified">
+		<type name="timestamp" length="0"/>
+	</column>
+	<constraint name="movies_pk" type="pk-constr" table="public.movies">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<sequence name="movies_id_seq" cycle="false" start="1" increment="1" min-value="1" max-value="9223372036854775807" cache="1" sql-disabled="true">
+	<schema name="public"/>
+	<role name="postgres"/>
+</sequence>
+
+<table name="countries" layer="0" collapse-mode="2" max-obj-count="2">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="1560" y="80"/>
+	<column name="id" not-null="true"
+	 identity-type="ALWAYS" start="1" increment="1" min-value="1" max-value="32767" cache="1">
+		<type name="smallint" length="0"/>
+	</column>
+	<column name="country" not-null="true">
+		<type name="character varying" length="0"/>
+	</column>
+	<constraint name="countries_pk" type="pk-constr" table="public.countries">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<sequence name="countries_id_seq" cycle="false" start="1" increment="1" min-value="1" max-value="32767" cache="1" sql-disabled="true">
+	<schema name="public"/>
+	<role name="postgres"/>
+</sequence>
+
+<table name="content_ratings" layer="0" collapse-mode="2" max-obj-count="2">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="260" y="340"/>
+	<column name="id" not-null="true"
+	 identity-type="ALWAYS" start="1" increment="1" min-value="1" max-value="32767" cache="1">
+		<type name="smallint" length="0"/>
+	</column>
+	<column name="content_rating" not-null="true">
+		<type name="character varying" length="0"/>
+	</column>
+	<constraint name="content_ratings_pk" type="pk-constr" table="public.content_ratings">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<sequence name="content_ratings_id_seq" cycle="false" start="1" increment="1" min-value="1" max-value="32767" cache="1" sql-disabled="true">
+	<schema name="public"/>
+	<role name="postgres"/>
+</sequence>
+
+<table name="many_actors_has_many_movies" layer="0" collapse-mode="2" max-obj-count="3">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="1440" y="940"/>
+	<column name="id_actors" not-null="true">
+		<type name="bigint" length="0"/>
+	</column>
+	<column name="id_movies" not-null="true">
+		<type name="bigint" length="0"/>
+	</column>
+	<column name="movie_actor_number" not-null="true">
+		<type name="smallint" length="0"/>
+	</column>
+	<constraint name="many_actors_has_many_movies_pk" type="pk-constr" table="public.many_actors_has_many_movies">
+		<columns names="id_movies,id_actors" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<view name="directors_works" layer="0" collapse-mode="2" max-obj-count="1">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="1920" y="260"/>
+	<reference>
+		<expression><![CDATA[ SELECT directors.name,
+    movies.num_critic_for_reviews,
+    colors.color,
+    movies.duration,
+    movies.gross,
+    movies.genres,
+    movies.movie_title,
+    movies.num_voted_users,
+    movies.facenumber_in_poster,
+    movies.plot_keywords,
+    movies.movie_imdb_link,
+    movies.num_user_for_reviews,
+    movies.language,
+    countries.country,
+    content_ratings.content_rating,
+    movies.budget,
+    movies.title_year,
+    movies.imdb_score,
+    movies.aspect_ratio,
+    movies.movie_facebook_likes
+   FROM ((((movies
+     JOIN colors ON ((movies.id_colors = colors.id)))
+     JOIN directors ON ((movies.id_directors = directors.id)))
+     JOIN countries ON ((movies.id_countries = countries.id)))
+     JOIN content_ratings ON ((movies.id_content_ratings = content_ratings.id)))
+  ORDER BY directors.name;]]></expression>
+	<column name="name">
+		<type name="character varying" length="0"/>
+	</column>
+	<column name="num_critic_for_reviews">
+		<type name="bigint" length="0"/>
+	</column>
+	<column name="color">
+		<type name="character varying" length="0"/>
+	</column>
+	<column name="duration">
+		<type name="bigint" length="0"/>
+	</column>
+	<column name="gross">
+		<type name="money" length="0"/>
+	</column>
+	<column name="genres">
+		<type name="character varying" length="0"/>
+	</column>
+	<column name="movie_title">
+		<type name="character varying" length="0"/>
+	</column>
+	<column name="num_voted_users">
+		<type name="bigint" length="0"/>
+	</column>
+	<column name="facenumber_in_poster">
+		<type name="bigint" length="0"/>
+	</column>
+	<column name="plot_keywords">
+		<type name="character varying" length="0"/>
+	</column>
+	<column name="movie_imdb_link">
+		<type name="character varying" length="0"/>
+	</column>
+	<column name="num_user_for_reviews">
+		<type name="bigint" length="0"/>
+	</column>
+	<column name="language">
+		<type name="character varying" length="0"/>
+	</column>
+	<column name="country">
+		<type name="character varying" length="0"/>
+	</column>
+	<column name="content_rating">
+		<type name="character varying" length="0"/>
+	</column>
+	<column name="budget">
+		<type name="money" length="0"/>
+	</column>
+	<column name="title_year">
+		<type name="smallint" length="0"/>
+	</column>
+	<column name="imdb_score">
+		<type name="numeric" length="4" precision="1"/>
+	</column>
+	<column name="aspect_ratio">
+		<type name="numeric" length="4" precision="2"/>
+	</column>
+	<column name="movie_facebook_likes">
+		<type name="bigint" length="0"/>
+	</column>
+		<reftable name="public.colors"/>
+		<reftable name="public.directors"/>
+		<reftable name="public.movies"/>
+		<reftable name="public.countries"/>
+		<reftable name="public.content_ratings"/>
+	</reference>
+</view>
+
+<relationship name="rel_directors_works_colors" type="reltv" layer="0"
+	 custom-color="#df5aaf"
+	 src-table="public.directors_works"
+	 dst-table="public.colors"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_directors_works_directors" type="reltv" layer="0"
+	 custom-color="#9ac0df"
+	 src-table="public.directors_works"
+	 dst-table="public.directors"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_directors_works_movies" type="reltv" layer="0"
+	 custom-color="#97396a"
+	 src-table="public.directors_works"
+	 dst-table="public.movies"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_directors_works_countries" type="reltv" layer="0"
+	 custom-color="#440010"
+	 src-table="public.directors_works"
+	 dst-table="public.countries"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_directors_works_content_ratings" type="reltv" layer="0"
+	 custom-color="#0abc77"
+	 src-table="public.directors_works"
+	 dst-table="public.content_ratings"
+	 src-required="false" dst-required="false"/>
+
+<view name="movie_gross_rank" layer="0" collapse-mode="2" max-obj-count="1">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="1620" y="660"/>
+	<reference>
+		<expression><![CDATA[ SELECT movies.movie_title,
+    movies.gross
+   FROM movies
+  WHERE (movies.gross IS NOT NULL)
+  ORDER BY movies.gross DESC;]]></expression>
+	<column name="movie_title">
+		<type name="character varying" length="0"/>
+	</column>
+	<column name="gross">
+		<type name="money" length="0"/>
+	</column>
+		<reftable name="public.movies"/>
+	</reference>
+</view>
+
+<relationship name="rel_movie_gross_rank_movies" type="reltv" layer="0"
+	 custom-color="#87feaf"
+	 src-table="public.movie_gross_rank"
+	 dst-table="public.movies"
+	 src-required="false" dst-required="false"/>
+
+<view name="movie_budget_rank" layer="0" collapse-mode="2" max-obj-count="1">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="1620" y="760"/>
+	<reference>
+		<expression><![CDATA[ SELECT movies.movie_title,
+    movies.budget
+   FROM movies
+  WHERE (movies.budget IS NOT NULL)
+  ORDER BY movies.budget DESC;]]></expression>
+	<column name="movie_title">
+		<type name="character varying" length="0"/>
+	</column>
+	<column name="budget">
+		<type name="money" length="0"/>
+	</column>
+		<reftable name="public.movies"/>
+	</reference>
+</view>
+
+<relationship name="rel_movie_budget_rank_movies" type="reltv" layer="0"
+	 custom-color="#09ca0a"
+	 src-table="public.movie_budget_rank"
+	 dst-table="public.movies"
+	 src-required="false" dst-required="false"/>
+
+<view name="movie_roi" layer="0" collapse-mode="2" max-obj-count="1">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="260" y="980"/>
+	<reference>
+		<expression><![CDATA[ SELECT movies.movie_title,
+    movies.gross,
+    movies.budget,
+    ((movies.gross / movies.budget))::numeric(6,2) AS roi_mult
+   FROM movies
+  WHERE ((movies.gross IS NOT NULL) AND (movies.budget IS NOT NULL))
+  ORDER BY (((movies.gross / movies.budget))::numeric(6,2)) DESC;]]></expression>
+	<column name="movie_title">
+		<type name="character varying" length="0"/>
+	</column>
+	<column name="gross">
+		<type name="money" length="0"/>
+	</column>
+	<column name="budget">
+		<type name="money" length="0"/>
+	</column>
+	<column name="roi_mult">
+		<type name="numeric" length="6" precision="2"/>
+	</column>
+		<reftable name="public.movies"/>
+	</reference>
+</view>
+
+<relationship name="rel_movie_roi_movies" type="reltv" layer="0"
+	 custom-color="#3bdcda"
+	 src-table="public.movie_roi"
+	 dst-table="public.movies"
+	 src-required="false" dst-required="false"/>
+
+<view name="actor_films" layer="0" collapse-mode="2" max-obj-count="1">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="440" y="1160"/>
+	<reference>
+		<expression><![CDATA[ SELECT actors.name,
+    movies.movie_title
+   FROM ((actors
+     JOIN many_actors_has_many_movies ON ((many_actors_has_many_movies.id_actors = actors.id)))
+     JOIN movies ON ((many_actors_has_many_movies.id_movies = movies.id)))
+  ORDER BY actors.name;]]></expression>
+	<column name="name">
+		<type name="character varying" length="0"/>
+	</column>
+	<column name="movie_title">
+		<type name="character varying" length="0"/>
+	</column>
+		<reftable name="public.actors"/>
+		<reftable name="public.movies"/>
+		<reftable name="public.many_actors_has_many_movies"/>
+	</reference>
+</view>
+
+<relationship name="rel_actor_films_actors" type="reltv" layer="0"
+	 custom-color="#cae898"
+	 src-table="public.actor_films"
+	 dst-table="public.actors"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_actor_films_movies" type="reltv" layer="0"
+	 custom-color="#5910e9"
+	 src-table="public.actor_films"
+	 dst-table="public.movies"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_actor_films_many_actors_has_many_movies" type="reltv" layer="0"
+	 custom-color="#bf6023"
+	 src-table="public.actor_films"
+	 dst-table="public.many_actors_has_many_movies"
+	 src-required="false" dst-required="false"/>
+
+<function name="search_title"
+		window-func="false"
+		returns-setof="true"
+		behavior-type="CALLED ON NULL INPUT"
+		function-type="VOLATILE"
+		security-type="SECURITY INVOKER"
+		execution-cost="100"
+		row-amount="1000">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<language name="plpgsql" sql-disabled="true"/>
+	<return-type>
+	<parameter name="id">
+		<type name="bigint" length="0"/>
+	</parameter>
+	<parameter name="titles">
+		<type name="character varying" length="0"/>
+	</parameter>
+	</return-type>
+	<parameter name="title" in="true">
+		<type name="character varying" length="0"/>
+	</parameter>
+	<definition><![CDATA[
+    BEGIN
+         RETURN QUERY
+             SELECT movies.id, movies.movie_title
+             FROM public.movies
+             WHERE movies.movie_title LIKE CONCAT( '%', title, '%');
+    END;
+]]></definition>
+</function>
+
+<function name="search_actor"
+		window-func="false"
+		returns-setof="true"
+		behavior-type="CALLED ON NULL INPUT"
+		function-type="VOLATILE"
+		security-type="SECURITY INVOKER"
+		execution-cost="100"
+		row-amount="1000">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<language name="plpgsql" sql-disabled="true"/>
+	<return-type>
+	<parameter name="id">
+		<type name="bigint" length="0"/>
+	</parameter>
+	<parameter name="names">
+		<type name="character varying" length="0"/>
+	</parameter>
+	</return-type>
+	<parameter name="actor_name" in="true">
+		<type name="character varying" length="0"/>
+	</parameter>
+	<definition><![CDATA[
+    BEGIN
+         RETURN QUERY
+             SELECT actors.id, actors.name
+             FROM public.actors
+             WHERE actors.name LIKE CONCAT( '%', actor_name, '%');
+    END;
+]]></definition>
+</function>
+
+<function name="search_director_title"
+		window-func="false"
+		returns-setof="true"
+		behavior-type="CALLED ON NULL INPUT"
+		function-type="VOLATILE"
+		security-type="SECURITY INVOKER"
+		execution-cost="100"
+		row-amount="1000">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<language name="plpgsql" sql-disabled="true"/>
+	<return-type>
+	<parameter name="id">
+		<type name="bigint" length="0"/>
+	</parameter>
+	<parameter name="names">
+		<type name="character varying" length="0"/>
+	</parameter>
+	<parameter name="titles">
+		<type name="character varying" length="0"/>
+	</parameter>
+	</return-type>
+	<parameter name="director_name" in="true">
+		<type name="character varying" length="0"/>
+	</parameter>
+	<parameter name="title" in="true">
+		<type name="character varying" length="0"/>
+	</parameter>
+	<definition><![CDATA[
+    BEGIN
+         RETURN QUERY
+			SELECT directors.id, directors.name, movies.movie_title 
+			FROM public.directors, public.movies
+			WHERE directors.name LIKE CONCAT( '%', director_name, '%') AND movies.movie_title LIKE CONCAT( '%', title, '%');
+    END;
+]]></definition>
+</function>
+
+<function name="search_actor_title"
+		window-func="false"
+		returns-setof="true"
+		behavior-type="CALLED ON NULL INPUT"
+		function-type="VOLATILE"
+		security-type="SECURITY INVOKER"
+		execution-cost="100"
+		row-amount="1000">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<language name="plpgsql" sql-disabled="true"/>
+	<return-type>
+	<parameter name="id">
+		<type name="bigint" length="0"/>
+	</parameter>
+	<parameter name="names">
+		<type name="character varying" length="0"/>
+	</parameter>
+	<parameter name="titles">
+		<type name="character varying" length="0"/>
+	</parameter>
+	</return-type>
+	<parameter name="actor_name" in="true">
+		<type name="character varying" length="0"/>
+	</parameter>
+	<parameter name="title" in="true">
+		<type name="character varying" length="0"/>
+	</parameter>
+	<definition><![CDATA[
+    BEGIN
+         RETURN QUERY
+			SELECT actors.id, actors.name, movies.movie_title 
+			FROM public.actors, public.movies
+			WHERE actors.name LIKE CONCAT( '%', actor_name, '%') AND movies.movie_title LIKE CONCAT( '%', title, '%');
+    END;
+]]></definition>
+</function>
+
+<function name="movies_last_updated"
+		window-func="false"
+		returns-setof="false"
+		behavior-type="CALLED ON NULL INPUT"
+		function-type="VOLATILE"
+		security-type="SECURITY INVOKER"
+		execution-cost="100"
+		row-amount="0">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<language name="plpgsql" sql-disabled="true"/>
+	<return-type>
+	<type name="trigger" length="1"/>
+	</return-type>
+	<definition><![CDATA[
+	BEGIN
+		NEW.last_modified = CURRENT_TIMESTAMP;
+		RETURN NEW;
+	END;
+]]></definition>
+</function>
+
+<trigger name="movie_updated" firing-type="BEFORE" per-line="true" constraint="false"
+	 ins-event="false" del-event="false" upd-event="true" trunc-event="false"
+	 table="public.movies">
+		<function signature="public.movies_last_updated()"/>
+</trigger>
+
+<function name="force_movies_timestamp"
+		window-func="false"
+		returns-setof="false"
+		behavior-type="CALLED ON NULL INPUT"
+		function-type="VOLATILE"
+		security-type="SECURITY INVOKER"
+		execution-cost="100"
+		row-amount="0">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<language name="plpgsql" sql-disabled="true"/>
+	<return-type>
+	<type name="void" length="1"/>
+	</return-type>
+	<parameter name="id_movies">
+		<type name="bigint" length="0"/>
+	</parameter>
+	<parameter name="stamp">
+		<type name="timestamp" length="0"/>
+	</parameter>
+	<definition><![CDATA[
+	BEGIN 
+		UPDATE movies SET last_modified = stamp
+		WHERE movies.id = id_movies;
+	END;
+]]></definition>
+</function>
+
+<function name="force_movies_timestamp_proc"
+		window-func="false"
+		returns-setof="false"
+		behavior-type="CALLED ON NULL INPUT"
+		function-type="VOLATILE"
+		security-type="SECURITY INVOKER"
+		execution-cost="100"
+		row-amount="0">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<language name="plpgsql" sql-disabled="true"/>
+	<return-type>
+	<type name="void" length="1"/>
+	</return-type>
+	<parameter name="_param1">
+		<type name="bigint" length="0"/>
+	</parameter>
+	<parameter name="_param2">
+		<type name="timestamp" length="0"/>
+	</parameter>
+	<definition><![CDATA[
+BEGIN
+		UPDATE movies SET last_modified = $2
+		WHERE movies.id = $1;
+    COMMIT;
+END;
+]]></definition>
+</function>
+
+<constraint name="countries_fk" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="CASCADE" del-action="SET NULL" ref-table="public.countries" table="public.movies">
+	<columns names="id_countries" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="colors_fk" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="CASCADE" del-action="SET NULL" ref-table="public.colors" table="public.movies">
+	<columns names="id_colors" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="content_ratings_fk" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="CASCADE" del-action="SET NULL" ref-table="public.content_ratings" table="public.movies">
+	<columns names="id_content_ratings" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="directors_fk" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="CASCADE" del-action="SET NULL" ref-table="public.directors" table="public.movies">
+	<columns names="id_directors" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="actors_fk" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="CASCADE" del-action="CASCADE" ref-table="public.actors" table="public.many_actors_has_many_movies">
+	<columns names="id_actors" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="movies_fk" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="CASCADE" del-action="CASCADE" ref-table="public.movies" table="public.many_actors_has_many_movies">
+	<columns names="id_movies" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+</constraint>
+
+<relationship name="rel_movies_countries" type="relfk" layer="0"
+	 custom-color="#1c154b"
+	 src-table="public.movies"
+	 dst-table="public.countries" reference-fk="countries_fk"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_movies_colors" type="relfk" layer="0"
+	 custom-color="#ea1f03"
+	 src-table="public.movies"
+	 dst-table="public.colors" reference-fk="colors_fk"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_movies_content_ratings" type="relfk" layer="0"
+	 custom-color="#5d4170"
+	 src-table="public.movies"
+	 dst-table="public.content_ratings" reference-fk="content_ratings_fk"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_movies_directors" type="relfk" layer="0"
+	 custom-color="#4a9bf0"
+	 src-table="public.movies"
+	 dst-table="public.directors" reference-fk="directors_fk"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_many_actors_has_many_movies_actors" type="relfk" layer="0"
+	 custom-color="#e141e3"
+	 src-table="public.many_actors_has_many_movies"
+	 dst-table="public.actors" reference-fk="actors_fk"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_many_actors_has_many_movies_movies" type="relfk" layer="0"
+	 custom-color="#5e9f8e"
+	 src-table="public.many_actors_has_many_movies"
+	 dst-table="public.movies" reference-fk="movies_fk"
+	 src-required="false" dst-required="false"/>
+
+</dbmodel>
