@@ -199,7 +199,7 @@ ORDER BY actors.name;
 
 -- (5) Stored Procedures (with parameters) to run compiled SQL queries. 
 -- One of these stored procedures will accept and make use of the SQL Date format to be passed as an argument.
--- Note: PostgreSQL handles Procedures and Functions differently than MySQL.
+-- Note for Kyle: PostgreSQL handles Procedures and Functions differently than MySQL. Functions preffered.
 CREATE FUNCTION search_title(title varchar) RETURNS TABLE(id bigint, titles varchar) AS $$
     BEGIN
          RETURN QUERY
@@ -249,17 +249,31 @@ FOR EACH ROW
 EXECUTE PROCEDURE movies_last_updated();
 
 -- SELECT force_movies_timestamp(CAST(5 AS bigint),CAST(current_timestamp as timestamp));
-CREATE OR REPLACE PROCEDURE force_movies_timestamp(id_movies bigint, stamp timestamp) RETURNS VOID AS $$
+-- Need to cast... 
+CREATE FUNCTION force_movies_timestamp(id_movies bigint, stamp timestamp) RETURNS VOID AS $$
 	BEGIN 
 		UPDATE movies SET last_modified = stamp
 		WHERE movies.id = id_movies;
 	END;
 $$ LANGUAGE plpgsql;
 
+-- As procedure
+-- CALL transfer(CAST(3 AS bigint),CAST(current_timestamp as timestamp));
+CREATE PROCEDURE force_movies_timestamp_proc(bigint, timestamp)
+LANGUAGE plpgsql    
+AS $$
+BEGIN
+		UPDATE movies SET last_modified = $2
+		WHERE movies.id = $1;
+    COMMIT;
+END;
+$$;
+
 
 -- (5) Five additional SQL Queries to perform joins across multiple tables. 
 -- Each of these tables should consist of a three table join.
-
+-- Do not run at init...
+/*
 SELECT 	
 		directors.name AS director,
 		colors.color AS color,
@@ -280,11 +294,46 @@ SELECT
 		aspect_ratio,
 		movie_facebook_likes
 FROM movies 
-JOIN directors on directors.id = movies.id_directors
+JOIN directors ON directors.id = movies.id_directors
 JOIN colors ON colors.id = movies.id_colors
 ORDER BY movies.movie_title;
 
+SELECT actors.name AS actor_1, movies.movie_title
+FROM actors 
+JOIN many_actors_has_many_movies ON actors.id = many_actors_has_many_movies.id_actors
+JOIN movies ON movies.id = many_actors_has_many_movies.id_movies
+WHERE many_actors_has_many_movies.movie_actor_number = 1 
+ORDER BY movies.movie_title;
 
+SELECT actors.name AS actor_2, movies.movie_title
+FROM actors 
+JOIN many_actors_has_many_movies ON actors.id = many_actors_has_many_movies.id_actors
+JOIN movies ON movies.id = many_actors_has_many_movies.id_movies
+WHERE many_actors_has_many_movies.movie_actor_number = 2 
+ORDER BY movies.movie_title;
 
+SELECT actors.name AS actor_3, movies.movie_title
+FROM actors 
+JOIN many_actors_has_many_movies ON actors.id = many_actors_has_many_movies.id_actors
+JOIN movies ON movies.id = many_actors_has_many_movies.id_movies
+WHERE many_actors_has_many_movies.movie_actor_number = 3
+ORDER BY movies.movie_title;
+
+SELECT 	
+		directors.name AS director,
+		colors.color AS color,
+		num_critic_for_reviews,
+		gross,
+		movie_title,
+		num_voted_users,
+		num_user_for_reviews,
+		budget,
+		title_year,
+		imdb_score
+FROM movies 
+JOIN directors ON directors.id = movies.id_directors
+JOIN colors ON colors.id = movies.id_colors
+ORDER BY movies.title_year DESC, movies.imdb_score DESC, budget desc;
+*/
 -- Remove import table.
--- DROP TABLE public.movie_data_temp;
+DROP TABLE public.movie_data_temp;
