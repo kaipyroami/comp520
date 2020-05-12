@@ -318,15 +318,12 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	</label>
 </relationship>
 
-<table name="many_actors_has_many_movies" layer="0" collapse-mode="2" max-obj-count="4">
+<table name="many_actors_has_many_movies" layer="0" collapse-mode="2" max-obj-count="3">
 	<schema name="public"/>
 	<position x="1220" y="260"/>
 	<column name="movie_actor_number" not-null="true">
 		<type name="smallint" length="0"/>
 	</column>
-	<constraint name="movie_actor_number_unq" type="uq-constr" table="public.many_actors_has_many_movies">
-		<columns names="movie_actor_number" ref-type="src-columns"/>
-	</constraint>
 
 	<customidxs object-type="column">
 		<object name="id_actors" index="0"/>
